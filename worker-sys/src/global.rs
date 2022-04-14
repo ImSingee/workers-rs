@@ -1,6 +1,6 @@
 use wasm_bindgen::prelude::*;
 
-use crate::{Request, RequestInit};
+use crate::{CacheStorage, Request, RequestInit};
 
 #[wasm_bindgen]
 extern "C" {
@@ -13,6 +13,10 @@ extern "C" {
     #[derive(Debug, Clone, PartialEq, Eq)]
     #[doc = "The `WorkerGlobalScope` class."]
     pub type WorkerGlobalScope;
+
+    # [wasm_bindgen (structural , catch , method , getter , js_class = "WorkerGlobalScope" , js_name = caches)]
+    #[doc = "Getter for the `caches` field of this object."]
+    pub fn caches(this: &WorkerGlobalScope) -> CacheStorage;
 
     #[wasm_bindgen (catch , method , structural , js_class = "WorkerGlobalScope" , js_name = atob)]
     #[doc = "The `atob()` method."]

@@ -70,7 +70,7 @@ extern "C" {
 impl CacheQueryOptions {
     pub fn new() -> Self {
         #[allow(unused_mut)]
-        let mut ret: Self = ::wasm_bindgen::JsCast::unchecked_into(::js_sys::Object::new());
+            let mut ret: Self = ::wasm_bindgen::JsCast::unchecked_into(::js_sys::Object::new());
         ret
     }
 
@@ -94,4 +94,16 @@ impl Default for CacheQueryOptions {
     fn default() -> Self {
         Self::new()
     }
+}
+
+#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(extends =::js_sys::Object, js_name = CacheStorage, typescript_type = "CacheStorage")]
+    pub type CacheStorage;
+
+    #[wasm_bindgen(structural, method, getter, js_class = "CacheStorage", js_name = default)]
+    pub fn default(this: &CacheStorage) -> Cache;
+
+    #[wasm_bindgen(method, structural, js_class = "CacheStorage", js_name = open)]
+    pub fn open(this: &CacheStorage, cache_name: &str) -> ::js_sys::Promise;
 }
